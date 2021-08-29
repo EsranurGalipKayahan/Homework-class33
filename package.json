@@ -44,6 +44,7 @@
     "comment-json": "^4.1.0",
     "cryptr": "^6.0.2",
     "cspell": "^5.3.12",
+    "discord.js": "^13.1.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.24.0",
     "eslint-plugin-hyf": "git://github.com/remarcmij/eslint-plugin-hyf.git",

@@ -7,6 +7,7 @@ For this exercise you should do the following:
   - An unsuccessful (i.e. rejected) throw should output a message similar to:
       Rejected! Dice 3 rolled off the table.
 
+
 The provided rollDice() function logs the value of a dice as it rolls, 
 time-stamped with the time of day (with millisecond accuracy) to the console. 
 Once you have successfully completed this exercise you will notice that the 
@@ -26,7 +27,14 @@ const rollDice = require('../../helpers/pokerDiceRoller');
 function rollTheDices() {
   // TODO Refactor this function
   const dices = [1, 2, 3, 4, 5];
-  return rollDice(1);
+
+  return Promise.all([
+    rollDice(dices[0]),
+    rollDice(dices[1]),
+    rollDice(dices[2]),
+    rollDice(dices[3]),
+    rollDice(dices[4]),
+  ]);
 }
 
 rollTheDices()
@@ -35,3 +43,9 @@ rollTheDices()
 
 // ! Do not change or remove the code below
 module.exports = rollTheDices;
+/*
+Promise.all() waits for all of the promises fulfillment state or the first rejection.
+All promises run asynchronously and if any of them will be at the rejected state,
+Promise.all changes it status as rejected immediately, so, it does not matter that
+the other promises executions.
+*/

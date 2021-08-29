@@ -1,0 +1,32 @@
+{
+  "node": "v16.8.0",
+  "system": {
+    "manufacturer": "ASUSTeK COMPUTER INC.",
+    "model": "UX510UXK"
+  },
+  "cpu": {
+    "manufacturer": "Intel®",
+    "brand": "Core™ i7-7500U",
+    "speed": 2.7
+  },
+  "memory": "8 GB",
+  "osInfo": {
+    "platform": "win32",
+    "distro": "Microsoft Windows 10 Home",
+    "release": "10.0.19043"
+  },
+  "vscodeInfo": {
+    "version": "1.59.1",
+    "extensions": [
+      "CoenraadS.bracket-pair-colorizer",
+      "esbenp.prettier-vscode",
+      "evgeniypeshkov.syntax-highlighter",
+      "hdg.live-html-previewer",
+      "ritwickdey.LiveServer",
+      "Wscats.eno"
+    ],
+    "userSettings": {
+      "workbench.colorTheme": "Default Dark+"
+    }
+  }
+}
