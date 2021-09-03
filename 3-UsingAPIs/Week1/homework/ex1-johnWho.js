@@ -22,8 +22,13 @@ const getAnonName = (firstName) => {
 };
 
 getAnonName('John')
-  .then((resolvedData) => {
-    console.log(resolvedData);
+  //Actually I watched many videos about Promises to understand the concept clearly. And on the one of them, the programmer
+  //explains that Promise resolves data and dispatched then function. It sounds very sense to me. Therefore writing the code
+  //I follow my brain's step that it founds sense. So I used resolvedData. But it does not matter. I can change it with data.
+  .then((data) => {
+    //This resolved Data means, if Promise finish its working successfully, it will change its status to fulfilled.
+    //So in line 19, resolve gets fullName. Dispatches it to then. Here resolvedData contains the content of the fullName coming from line 19
+    console.log(data);
   })
   .catch((error) => {
     console.log(error.message);
@@ -31,3 +36,11 @@ getAnonName('John')
 
 // ! Do not change or remove the code below
 module.exports = getAnonName;
+//In line 24, getAnonName function is called with 'John' firstName. getAnonName return a Promise.
+//So it will work asynchronously. And the promise call setTimeout function and at least 1 second later anonymous function will run.
+//Inside of that function, at first, fullName is checked whether it is passed or not. Maybe programmer forgets the send any parameter.
+//If the programmer forgets Promise will change its status immediately as rejected with error message. Then line 30 will run.
+//In the console, error message will be displayed.
+//Otherwise, line 17 will be executed. And fullName is assigned to firstName getting from programmer and Doe. In line 19 Promise will change
+//it status to fulfillment by dispatching fullName. Line 25 is executed. Because Promise reached the fulfillment status. The data from resolve
+//can be reached the resolvedData variable. In line 28, it is displayed on the screen.

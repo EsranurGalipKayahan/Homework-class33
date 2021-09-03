@@ -9,7 +9,6 @@
   explanation? Add your answer as a comment to be bottom of the file.
 ------------------------------------------------------------------------------*/
 
-// TODO Remove callback and return a promise
 function rollDice() {
   return new Promise((resolve, reject) => {
     // Compute a random number of rolls (3-10) that the dice MUST complete
@@ -23,21 +22,20 @@ function rollDice() {
 
       // Use callback to notify that the dice rolled off the table after 6 rolls
       if (roll > 6) {
-        // TODO replace "error" callback
-
         reject(new Error('Oops... Dice rolled off the table.'));
+        return;
       }
 
       // Use callback to communicate the final dice value once finished rolling
       if (roll === randomRollsToDo) {
-        // TODO replace "success" callback
-
         resolve(value);
+        return;
       }
 
       // Schedule the next roll todo until no more rolls to do
       if (roll < randomRollsToDo) {
         setTimeout(() => rollOnce(roll + 1), 500);
+        return;
       }
     };
 
@@ -46,10 +44,9 @@ function rollDice() {
   });
 }
 
-// TODO Refactor to use promise
-rollDice()
-  .then((resolvedData) => {
-    console.log(`Success! Dice settled on ${resolvedData}.`);
+rollDice() //I have already explained the resolved data in ex1. I can change it with data.
+  .then((data) => {
+    console.log(`Success! Dice settled on ${data}.`);
   })
   .catch((error) => {
     console.log(error.message);
@@ -66,3 +63,4 @@ error message and displays. So, even the rolling is going on, success message wi
 is in the rejected state.If we do not want the continue of rolling after reaching 6 roll number, we can change if statements
 with if else or at the end of the each if you should put return keyword...otherwise setTimeout function will be called until reaching to randomRollsToDo
 */
+/* My prefer is that it should finish the program */

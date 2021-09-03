@@ -15,28 +15,34 @@ const rollDice = require('../../helpers/pokerDiceRoller');
 function rollTheDices() {
   const results = [];
 
-  // TODO: expand the chain to include five dices
-  return rollDice(1)
-    .then((value) => {
-      results.push(value);
-      return rollDice(2);
-    })
-    .then((value) => {
-      results.push(value);
-      return rollDice(3);
-    })
-    .then((value) => {
-      results.push(value);
-      return rollDice(4);
-    })
-    .then((value) => {
-      results.push(value);
-      return rollDice(5);
-    })
-    .then((value) => {
-      results.push(value);
-      return results;
-    });
+  return (
+    rollDice(1)
+      .then((value) => {
+        results.push(value);
+        return rollDice(2);
+      })
+      .then((value) => {
+        results.push(value);
+        return rollDice(3);
+      })
+      .then((value) => {
+        results.push(value);
+        return rollDice(4);
+      })
+      .then((value) => {
+        results.push(value);
+        return rollDice(5);
+      })
+      .then((value) => {
+        results.push(value);
+        return results;
+      })
+      /*Actually I just run the unit tests. And it passed all of them. I supposed that I forget nothing
+    But I change... Probably it runs correctly now*/
+      .catch((error) => {
+        throw new Error(error);
+      })
+  );
 }
 
 rollTheDices()

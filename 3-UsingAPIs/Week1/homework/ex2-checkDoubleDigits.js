@@ -16,11 +16,7 @@ function checkDoubleDigits(number) {
     if (number >= 10 && number <= 99) {
       resolve('This is a double digit number!');
     } else {
-      reject(
-        new Error(
-          'Expected a double digit number but got `number`, where `number` is the number that was passed as an argument.'
-        )
-      );
+      reject(new Error('Expected a double digit number but got ' + number));
     }
   });
   return promise;
@@ -38,5 +34,7 @@ checkDoubleDigits(123) // should reject
   .then((message) => console.log(message))
   .catch((error) => console.log(error.message));
 
+//Sorry but HYF culture is a little bit confusing. I have learned Homework module by chance. And this week's homework
+//I have yet realized that Read.me pages of the each homework. It takes too time to get used that culture :)
 // ! Do not change or remove the code below
 module.exports = checkDoubleDigits;

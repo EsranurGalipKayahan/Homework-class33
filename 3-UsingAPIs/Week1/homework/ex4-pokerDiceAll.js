@@ -22,19 +22,21 @@ exercise file.
 
 // The line below makes the rollDice() function available to this file.
 // Do not change or remove it.
+
 const rollDice = require('../../helpers/pokerDiceRoller');
 
 function rollTheDices() {
   // TODO Refactor this function
   const dices = [1, 2, 3, 4, 5];
 
-  return Promise.all([
-    rollDice(dices[0]),
-    rollDice(dices[1]),
-    rollDice(dices[2]),
-    rollDice(dices[3]),
-    rollDice(dices[4]),
-  ]);
+  return Promise.all(generatePromises(dices, rollDice));
+}
+function generatePromises(dices, executableFunction) {
+  const queue = [];
+  for (let i = 0; i < dices.length; i++) {
+    queue.push(executableFunction(dices[i]));
+  }
+  return queue;
 }
 
 rollTheDices()
