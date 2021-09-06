@@ -10,19 +10,39 @@
 // ! Do not remove this line
 const rollDice = require('../../helpers/pokerDiceRoller');
 
+//returns a Promise that is the winner
 function rollTheDices() {
   const dices = [1, 2, 3, 4, 5];
-  // TODO complete this function; use Promise.race() and rollDice()
+
+  return Promise.race(generatePromises(dices, rollDice));
 }
 
-// Refactor this function to use async/await and try/catch
-function main() {
-  rollTheDices()
-    .then((results) => console.log('Resolved!', results))
-    .catch((error) => console.log('Rejected!', error.message));
+//returns an array consists of promises
+function generatePromises(dices, executerFunction) {
+  const queue = [];
+  for (let i = 0; i < dices.length; i++) {
+    queue.push(executerFunction(dices[i]));
+  }
+  return queue;
+}
+
+async function main() {
+  try {
+    const results = await rollTheDices();
+    console.log('Resolved!', results);
+  } catch (error) {
+    console.log('Rejected!', error.message);
+  }
 }
 
 main();
 
 // ! Do not change or remove the code below
 module.exports = rollTheDices;
+/*
+Each of dices run on different thread and they work asynchronously. 
+Promise.race waits for only the winner. As soon as winner is resolved or rejected, 
+Promise.race returns a promise and display the winner data or error message.
+During that time, the other threads are going on working. Because they are independent.
+ES6 promises do not support cancellation yet.
+*/

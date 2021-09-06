@@ -1,4 +1,5 @@
 'use strict';
+
 /*------------------------------------------------------------------------------
 1. Complete the function `requestData()` using `fetch()` to make a request to 
    the url passed to it as an argument. The function should return a promise. 
@@ -15,29 +16,43 @@
    url with `.shx`. There is no server at the modified url, therefore this 
    should result in a network (DNS) error.
 ------------------------------------------------------------------------------*/
-function requestData(url) {
-  // TODO return a promise using `fetch()`
+//requesting data from given url
+async function requestData(url) {
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Request failed!');
+  } catch (error) {
+    renderError(error);
+  }
 }
 
 function renderImage(data) {
-  // TODO render the image to the DOM
-  console.log(data);
+  // Creating img element to display image on the website
+  const imageElement = document.createElement('img');
+  imageElement.src = data;
+  document.body.appendChild(imageElement);
 }
 
 function renderError(error) {
-  // TODO render the error to the DOM
-  console.log(error);
+  /* If any error happens, this function is called.
+  This function creates h1 element to display it on the website */
+  const errorHeaderElement = document.createElement('h1');
+  errorHeaderElement.textContent = error;
+  document.body.appendChild(errorHeaderElement);
 }
 
-// TODO refactor with async/await and try/catch
-function main() {
-  requestData('https://xkcd.now.sh/?comic=latest')
-    .then((data) => {
-      renderImage(data);
-    })
-    .catch((error) => {
-      renderError(error);
-    });
+/* This function is executed when the browser is opened */
+async function main() {
+  const url = 'https://xkcd.now.sh/?comic=latest';
+  /* Asynchronously fetching image from given url */
+  try {
+    const data = await requestData(url);
+    renderImage(data.img);
+  } catch (error) {
+    renderError(error);
+  }
 }
-
 window.addEventListener('load', main);
