@@ -29,10 +29,10 @@ async function requestData(url) {
   }
 }
 
-function renderImage(data) {
+function renderImage(imageUrl) {
   // Creating img element to display image on the website
   const imageElement = document.createElement('img');
-  imageElement.src = data;
+  imageElement.src = imageUrl;
   document.body.appendChild(imageElement);
 }
 
