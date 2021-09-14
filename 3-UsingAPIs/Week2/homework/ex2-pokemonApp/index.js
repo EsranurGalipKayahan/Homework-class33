@@ -116,12 +116,11 @@ function createPage() {
   appendToBody(listContainer);
   appendToBody(imageContainer);
 }
-//creates select list
+
 function createList() {
   const listElement = createDOMElement('select', { id: 'pokemon-list' });
   return listElement;
 }
-//creates get button
 function createGetButton() {
   const buttonElement = createDOMElement('button', { id: 'get-button' });
   buttonElement.textContent = 'Get Pokemon!';
