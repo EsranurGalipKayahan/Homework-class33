@@ -36,7 +36,10 @@ async function fetchAndPopulatePokemons() {
     const data = await fetchData(url);
     if (data) {
       populateList(data.results);
-    } else throw new Error('Request failed : ', data.status);
+    } else 
+     {
+      throw new Error('Request failed : ', data.status);
+     }
   } catch (error) {
     console.log(error);
   }
